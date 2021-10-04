@@ -51,9 +51,9 @@ public class S3M2Test {
     public void testReadFile() throws IOException {
         var reader = new SceneDescriptionFileReader();
         String result = reader.printTextFromFile("TestScene.txt");
-        assertEquals("Roses are red\n" +
-                "Violets are blue\n" +
-                "Unexpected bracket\n" +
-                "On line 32\n", result);
+        assertEquals("Roses are red\r\n" +
+                "Violets are blue\r\n" +
+                "Unexpected bracket\r\n" +
+                "On line 32\r\n", result);
     }
 }
