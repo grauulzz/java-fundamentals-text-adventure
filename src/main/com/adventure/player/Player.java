@@ -17,6 +17,7 @@ public class Player {
     private int power = 1;
     private int health = 10;
 
+
     /**
      * Sprint 2 Module 1
      * Saves the player's name. This file should store the name so it can be referenced later. After setting the name,
@@ -67,6 +68,14 @@ public class Player {
      * @return true if the move is executed. Otherwise, false.
      */
     public boolean move(String direction, boolean isValid) {
+        if (direction.equals("EAST") && isValid) {
+            currentLocationIndex++;
+        } else if (direction.equals("WEST") && isValid) {
+            currentLocationIndex--;
+        } else {
+            System.out.println(direction + " is not a valid direction");
+            return false;
+        }
         return true;
     }
 
