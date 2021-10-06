@@ -17,7 +17,6 @@ public class Player {
     private int power = 1;
     private int health = 10;
 
-
     /**
      * Sprint 2 Module 1
      * Saves the player's name. This file should store the name so it can be referenced later. After setting the name,

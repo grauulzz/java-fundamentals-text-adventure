@@ -8,3 +8,7 @@
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
 
 
+
+gradle/
+
+gradlew

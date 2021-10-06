@@ -9,7 +9,7 @@ public class Hole {
      * @param content - the item that is covered by the hole.
      */
     public Hole(Key content) {
-
+        new HoleContent(content);
     }
 
     /**

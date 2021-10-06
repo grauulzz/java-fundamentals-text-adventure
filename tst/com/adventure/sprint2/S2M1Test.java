@@ -47,6 +47,6 @@ class S2M1Test {
         String testName = "Test name";
         player.setName(testName);
         assertEquals(player.getName(), testName);
-        assertEquals("Your name is now " + testName + "\r\n", outContent.toString());
+        assertEquals("Your name is now " + testName, outContent.toString().trim());
     }
 }
