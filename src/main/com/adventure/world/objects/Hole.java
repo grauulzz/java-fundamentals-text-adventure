@@ -7,7 +7,7 @@ public class Hole {
     HoleContent content;
 
     /**
-     * Creates a hole with the given content.
+     * Creates a hole with content.
      * @param content - the item that is covered by the hole.
      */
     public Hole(Key content) {
