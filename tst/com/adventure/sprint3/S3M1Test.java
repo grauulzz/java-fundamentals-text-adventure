@@ -34,6 +34,7 @@ public class S3M1Test {
         assertEquals("west", command.getObjectName());
 
         when(processor.prompt()).thenReturn("move east");
+        when(processor.getNextCommand()).thenCallRealMethod();
         command = processor.getNextCommand();
         assertEquals(CommandVerb.MOVE, command.getVerb());
         assertEquals("east", command.getObjectName());
@@ -46,6 +47,7 @@ public class S3M1Test {
         }
 
         when(processor.prompt()).thenReturn("use key");
+        when(processor.getNextCommand()).thenCallRealMethod();
         Command command = processor.getNextCommand();
         assertEquals(CommandVerb.USE, command.getVerb());
         assertEquals("key", command.getObjectName());
@@ -58,6 +60,7 @@ public class S3M1Test {
         }
 
         when(processor.prompt()).thenReturn("help");
+        when(processor.getNextCommand()).thenCallRealMethod();
         Command command = processor.getNextCommand();
         assertEquals(CommandVerb.HELP, command.getVerb());
         assertEquals("", command.getObjectName());
@@ -70,6 +73,7 @@ public class S3M1Test {
         }
 
         when(processor.prompt()).thenReturn("Bad command");
+        when(processor.getNextCommand()).thenCallRealMethod();
         Command command = processor.getNextCommand();
         assertEquals(CommandVerb.INVALID, command.getVerb());
     }

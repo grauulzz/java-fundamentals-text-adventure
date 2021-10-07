@@ -2,14 +2,37 @@ package main.com.adventure.world.objects;
 
 import main.com.adventure.world.objects.keys.Key;
 
-public class HoleContent extends Hole {
+public class HoleContent {
+    private Key content;
+    private boolean isCovered;
 
     /**
-     * Creates a hole with the given content.
-     *
-     * @param content - the item that is covered by the hole.
+     * @param key - gather content from key.
      */
-    public HoleContent(Key content) {
-        super(content);
+    public HoleContent(Key key) {
+        this.content = key;
+        this.isCovered = true;
     }
+
+    /**
+     * setCovered - toggles the hole content.
+     */
+    public void setCovered() {
+        isCovered = !isCovered;
+    }
+
+    /**
+     * @return - gets value of isCovered.
+     */
+    public boolean isCovered() {
+        return isCovered;
+    }
+
+    /**
+     * @return - hole content if applicable.
+     */
+    public Key getKey() {
+        return this.content;
+    }
+
 }
