@@ -120,8 +120,8 @@ public class GameController {
         getNextCommand();
     }
 
-    private void applyCommand(Command command) {
-        if (command.getVerb().equalsIgnoreCase(Command.LOOK)) {
+    /*
+            if (command.getVerb().equalsIgnoreCase(Command.LOOK)) {
             describeCurrentScene();
         } else if (command.getVerb().equalsIgnoreCase(Command.MOVE)) {
             move(command.getObjectName());
@@ -138,6 +138,61 @@ public class GameController {
         } else {
             printInvalidCommand();
         }
+     */
+
+    private void applyCommand(Command command) {
+
+        switch (command.getVerb()) {
+            case LOOK:
+                describeCurrentScene();
+                break;
+            case MOVE:
+                move(command.getObjectName());
+                break;
+            case HELP:
+                printHelp();
+                break;
+            case USE:
+                use(command.getObjectName());
+                break;
+            case DIG:
+                dig();
+                break;
+            case EXAMINE:
+                examine(command.getObjectName());
+                break;
+            case TAKE:
+                take(command.getObjectName());
+                break;
+            default:
+                printInvalidCommand();
+                break;
+        }
+
+//        Command obj = new Command(CommandVerb.getVerb(command.toString()));
+//        obj.setVerb(command.toString());
+//
+//        String cmd = obj.getVerb();
+//
+//        switch (cmd) {
+//            case Command.LOOK:
+//                describeCurrentScene();
+//            case Command.MOVE:
+//                move(cmd);
+//            case Command.HELP:
+//                printHelp();
+//            case Command.USE:
+//                use(cmd);
+//            case Command.DIG:
+//                dig();
+//            case Command.EXAMINE:
+//                examine(cmd);
+//            case Command.TAKE:
+//                take(cmd);
+//            default:
+//                printInvalidCommand();
+//                break;
+//        }
     }
 
     private void startCombat() {

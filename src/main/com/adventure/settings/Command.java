@@ -42,8 +42,9 @@ public class Command {
         this.objectName = objectName;
     }
 
-    public String getVerb() {
-        return verb.toString();
+    public CommandVerb getVerb() {
+
+        return verb;
     }
 
     public void setVerb(String verb) {
