@@ -12,7 +12,7 @@ public class Command {
     public static final String INVALID = "invalid";
     public static final String HELP = "help";
 
-    private String verb;
+    private CommandVerb verb;
     private String objectName;
 
     /**
@@ -20,7 +20,7 @@ public class Command {
      * @param verb - the verb of the command
      * @param objectName - the object(s) to which the command is directed.
      */
-    public Command(String verb, String objectName) {
+    public Command(CommandVerb verb, String objectName) {
         this.verb = verb;
         this.objectName = objectName;
     }
@@ -29,7 +29,7 @@ public class Command {
      * Creates a command with no direct object (e.g. "help").
      * @param verb - the verb of the command
      */
-    public Command(String verb) {
+    public Command(CommandVerb verb) {
         this.verb = verb;
         this.objectName = "";
     }
@@ -43,11 +43,11 @@ public class Command {
     }
 
     public String getVerb() {
-        return verb;
+        return verb.toString();
     }
 
     public void setVerb(String verb) {
-        this.verb = verb;
+        this.verb = CommandVerb.getVerb(verb);
     }
 
     @Override

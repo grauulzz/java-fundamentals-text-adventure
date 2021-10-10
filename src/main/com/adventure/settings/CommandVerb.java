@@ -19,14 +19,13 @@ public enum CommandVerb {
     //Used in Sprint 3 Module 3
     INVENTORY;
 
-
     /**
      * Takes a users input and determines which verb to include in the command.
      * @param verbString - the users input.
      * @return - the CommandVerb associated with the given input.
      */
     public static CommandVerb getVerb(String verbString) {
-        return INVALID;
+        return CommandVerb.valueOf(verbString.toUpperCase());
     }
 
 }
