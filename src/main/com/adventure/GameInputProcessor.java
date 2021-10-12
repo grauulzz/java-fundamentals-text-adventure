@@ -23,14 +23,8 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and blank object
      */
     private Command buildSimpleCommand(String input) {
-//        String[] split = input.split(" ");
-        String verb;
-        if (input.contains(" ")) {
-            verb = input.substring(0, input.indexOf(" "));
-            return new Command(CommandVerb.getVerb(verb), "" );
-        }
-//        CommandVerb cmdVerb = CommandVerb.getVerb(input);
-        return new Command(CommandVerb.getVerb(input));
+        String[] split = input.split(" ");
+        return new Command(CommandVerb.getVerb(split[0].trim()));
     }
 
     /**
@@ -40,12 +34,9 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and object
      */
     private Command buildCommandWithObject(String input) {
-//        String[] split = input.split(" ");
-        int spaceIndex = input.indexOf(" ");
-        String objectName = input.substring(spaceIndex + 1);
-        String verb = input.substring(0, spaceIndex);
-        CommandVerb cmdVerb = CommandVerb.getVerb(verb);
-        return new Command(cmdVerb, objectName);
+        String[] split = input.split(" ");
+        CommandVerb cmdVerb = CommandVerb.getVerb(split[0]);
+        return new Command(cmdVerb, split[1]);
     }
 
 

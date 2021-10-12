@@ -4,6 +4,7 @@ package main.com.adventure.world.scenes;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.stream.Collectors;
 
 // CHECKSTYLE:ON
 
@@ -35,8 +36,7 @@ public class SceneDescriptionFileReader {
      */
 
     private String produceTextFromBufferedReader(BufferedReader br) throws IOException {
-        //remove this line
-        throw new IOException();
+        return br.lines().collect(Collectors.joining(System.lineSeparator()));
     }
 
     ////// DO NOT CHANGE ANYTHING BELOW THIS LINE /////

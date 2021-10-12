@@ -2,6 +2,8 @@ package main.com.adventure.player;
 
 import main.com.adventure.world.objects.Tangible;
 
+import java.util.ArrayList;
+
 /**
  * Stores any Tangible item up to the MAX_CAPACITY.
  */
@@ -9,7 +11,7 @@ public class Backpack {
 
     private static final int MAX_CAPACITY = 5;
 
-    private final Tangible[] items = new Tangible[MAX_CAPACITY];
+    ArrayList<Tangible> items = new ArrayList<>();
 
     /**
      * Add an item to the end of the backpack array and only if there's enough room in the backpack.
@@ -17,8 +19,9 @@ public class Backpack {
      * @return - true if the item is added. Otherwise, false.
      */
     public boolean addItem(Tangible item) {
-        //TODO Complete the function
-        return false;
+        if (items.size() >= MAX_CAPACITY) return false;
+        items.add(item);
+        return true;
     }
 
     /**
@@ -27,8 +30,7 @@ public class Backpack {
      * @return - the item if it exists. Otherwise, null.
      */
     public Tangible getItem(String name) {
-        //TODO Complete the function
-        return null;
+        return items.stream().filter(item -> name.equals(item.getName())).findAny().orElse(null);
     }
 
     /**
@@ -37,8 +39,7 @@ public class Backpack {
      * @return - true if the item was removed. Otherwise, false.
      */
     public boolean removeItem(Tangible item) {
-        //TODO Complete the function
-        return false;
+        return items.remove(item);
     }
 
     /**
@@ -50,6 +51,7 @@ public class Backpack {
      * Then each item should be printed with " - " before it.
      */
     public void printItems() {
-        //TODO Complete the function
+        System.out.println("Here are the items in your backpack ");
+        items.stream().forEach(item -> System.out.println(item.getName()));
     }
 }
