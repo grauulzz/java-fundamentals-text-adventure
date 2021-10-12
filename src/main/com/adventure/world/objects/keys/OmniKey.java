@@ -9,6 +9,7 @@ public class OmniKey implements Tangible {
 
     private static final int pinLength = 5;
     public boolean[] pins = new boolean[pinLength];
+    private boolean bound;
 
     /**
      * A key that can be used with the OmniDoor.
@@ -26,7 +27,12 @@ public class OmniKey implements Tangible {
      */
     @Override
     public void useItem(Tangible door) {
-        //TODO Complete the function
+        if (bound)
+            return;
+
+        if (door instanceof OmniDoor) {
+            bound = ((OmniDoor) door).bindKey(this);
+        }
     }
 
     @Override

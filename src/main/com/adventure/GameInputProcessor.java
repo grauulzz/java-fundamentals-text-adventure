@@ -1,6 +1,8 @@
 package main.com.adventure;
 
+import main.com.adventure.exceptions.InvalidVerbException;
 import main.com.adventure.settings.Command;
+import main.com.adventure.settings.CommandVerb;
 
 import java.util.Scanner;
 
@@ -22,8 +24,14 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and blank object
      */
     private Command buildSimpleCommand(String input) {
-        String verb = input.substring(input.indexOf(input), input.indexOf(" "));
-        return new Command(verb, "");
+        String[] split = input.split(" ");
+        try {
+            return new Command(CommandVerb.getVerb(split[0].trim()));
+        } catch (InvalidVerbException e) {
+            e.printStackTrace();
+            return new Command(CommandVerb.INVALID);
+        }
+
     }
 
     /**
@@ -33,10 +41,14 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and object
      */
     private Command buildCommandWithObject(String input) {
-        int spaceIndex = input.indexOf(" ");
-        String objectName = input.substring(spaceIndex + 1);
-        String verb = input.substring(input.indexOf(input), spaceIndex);
-        return new Command(verb, objectName);
+        String[] split = input.split(" ");
+        CommandVerb cmdVerb = CommandVerb.INVALID;
+        try {
+            cmdVerb = CommandVerb.getVerb(split[0]);
+        } catch (InvalidVerbException e) {
+            e.printStackTrace();
+        }
+        return new Command(cmdVerb, split[1]);
     }
 
 
