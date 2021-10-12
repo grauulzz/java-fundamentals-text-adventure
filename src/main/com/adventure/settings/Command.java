@@ -1,5 +1,7 @@
 package main.com.adventure.settings;
 
+import main.com.adventure.exceptions.InvalidVerbException;
+
 public class Command {
 
     public static final String TAKE = "take";
@@ -48,7 +50,11 @@ public class Command {
     }
 
     public void setVerb(String verb) {
-        this.verb = CommandVerb.getVerb(verb);
+        try {
+            this.verb = CommandVerb.getVerb(verb);
+        } catch (InvalidVerbException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

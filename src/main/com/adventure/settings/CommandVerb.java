@@ -1,5 +1,7 @@
 package main.com.adventure.settings;
 
+import main.com.adventure.exceptions.InvalidVerbException;
+
 /**
  * Sprint 3 Module 1
  * This CommandVerb will be used instead of strings once we've learned about Enums.
@@ -24,14 +26,14 @@ public enum CommandVerb {
      * @param verbString - the users input.
      * @return - the CommandVerb associated with the given input.
      */
-    public static CommandVerb getVerb(String verbString) {
+    public static CommandVerb getVerb(String verbString) throws InvalidVerbException {
         CommandVerb[] cmdArry = CommandVerb.values();
         for (CommandVerb verb : cmdArry) {
             if (verb.toString().equalsIgnoreCase(verbString)) {
                 return verb;
             }
         }
-        return INVALID;
+        throw new InvalidVerbException();
     }
 
 }

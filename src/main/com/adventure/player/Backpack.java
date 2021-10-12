@@ -19,7 +19,9 @@ public class Backpack {
      * @return - true if the item is added. Otherwise, false.
      */
     public boolean addItem(Tangible item) {
-        if (items.size() >= MAX_CAPACITY) return false;
+        if (items.size() >= MAX_CAPACITY) {
+            return false;
+        }
         items.add(item);
         return true;
     }
@@ -51,7 +53,7 @@ public class Backpack {
      * Then each item should be printed with " - " before it.
      */
     public void printItems() {
-        System.out.println("Here are the items in your backpack ");
-        items.stream().forEach(item -> System.out.println(item.getName()));
+        System.out.println("Here are the items in your backpack:");
+        items.forEach(item -> System.out.println(" - " + item.getName()));
     }
 }

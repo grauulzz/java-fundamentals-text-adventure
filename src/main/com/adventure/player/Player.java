@@ -15,6 +15,7 @@ public class Player {
     private Shovel shovel;
     private int power = 1;
     private int health = 10;
+    private Backpack backpack = new Backpack();
 
     /**
      * Sprint 2 Module 1
@@ -95,8 +96,7 @@ public class Player {
      * @return the item or null if the item does not exist
      */
     public Tangible getItem(String itemName) {
-        //TODO Complete this function in Sprint 3 Module 3
-        return null;
+        return backpack.getItem(itemName);
     }
 
     /**
@@ -107,8 +107,7 @@ public class Player {
      * @return the removed item
      */
     public boolean removeItem(Tangible item) {
-        //TODO Complete this function in Sprint 3 Module 3
-        return false;
+        return backpack.removeItem(item);
     }
 
     /**
@@ -116,7 +115,7 @@ public class Player {
      * Prints the inventory.
      */
     public void printItems() {
-        //TODO Complete this function in Sprint 3 Module 3
+        backpack.printItems();
     }
 
     /**
@@ -126,7 +125,7 @@ public class Player {
      * @param item - item to add.
      */
     public void addItem(Tangible item) {
-        //TODO Complete this function
+        backpack.addItem(item);
     }
 
     public void setKey(Key item) {
