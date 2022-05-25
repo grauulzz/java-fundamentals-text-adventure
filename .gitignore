@@ -5,3 +5,5 @@
 .gradle/6.8/executionHistory/executionHistory.lock
 .gradle/6.8/fileHashes/fileHashes.lock
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
+/.idea/
+
