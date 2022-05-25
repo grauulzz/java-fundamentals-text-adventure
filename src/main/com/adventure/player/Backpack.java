@@ -11,7 +11,9 @@ public class Backpack {
 
     private static final int MAX_CAPACITY = 5;
 
-    ArrayList<Tangible> items = new ArrayList<>();
+//    ArrayList<Tangible> items = new ArrayList<>();
+
+    private final Tangible[] items = new Tangible[MAX_CAPACITY];
 
     /**
      * Add an item to the end of the backpack array and only if there's enough room in the backpack.
@@ -19,11 +21,17 @@ public class Backpack {
      * @return - true if the item is added. Otherwise, false.
      */
     public boolean addItem(Tangible item) {
-        if (items.size() >= MAX_CAPACITY) {
-            return false;
+//        if (items.size() >= MAX_CAPACITY) {
+//            return false;
+//        }
+//        items.add(item);
+        for (int i = 0; i < MAX_CAPACITY; i++) {
+            if (items[i] == null) {
+                items[i] = item;
+                return true;
+            }
         }
-        items.add(item);
-        return true;
+        return false;
     }
 
     /**
@@ -32,7 +40,16 @@ public class Backpack {
      * @return - the item if it exists. Otherwise, null.
      */
     public Tangible getItem(String name) {
-        return items.stream().filter(item -> name.equals(item.getName())).findAny().orElse(null);
+//        return items.stream()
+//                .filter(item -> name.equals(item.getName()))
+//                .findAny()
+//                .orElse(null);
+        for (Tangible item : items) {
+            if (item.getName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     /**
@@ -41,7 +58,24 @@ public class Backpack {
      * @return - true if the item was removed. Otherwise, false.
      */
     public boolean removeItem(Tangible item) {
-        return items.remove(item);
+//        return items.remove(item);
+
+//        for (Tangible item1 : items) {
+//            if (item1.equals(item)) {
+//                item.equals(null);
+//            }
+//        }
+
+        for (int i=0; i < MAX_CAPACITY; i++) {
+            if (items[i] == item) {
+                items[i] = null;
+                return true;
+            }
+
+        }
+
+        return false;
+
     }
 
     /**
@@ -54,6 +88,9 @@ public class Backpack {
      */
     public void printItems() {
         System.out.println("Here are the items in your backpack:");
-        items.forEach(item -> System.out.println(" - " + item.getName()));
+//        items.forEach(item -> System.out.println(" - " + item.getName()));
+        for (Tangible dumbItem : items) {
+            System.out.println(" - " + dumbItem.getName());
+        }
     }
 }
